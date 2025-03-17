@@ -17,7 +17,7 @@ class UserHostMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('web')->user()->role->value != UserRole::Host->value) {
+        if (!Auth::guard('web')->check() || Auth::guard('web')->user()->role->value != UserRole::Host->value) {
             return redirect()->route('host.home');
         }
         return $next($request);

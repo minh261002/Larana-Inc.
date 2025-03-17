@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('admin/icons/tabler-icons.css') }}">
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('admin/css/jquery-ui.min.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     @stack('styles')
 
@@ -43,7 +43,7 @@
     <script src="{{ asset('admin/js/demo-theme.min.js?1692870487') }}"></script>
 
     <div class="page bg-white">
-        <header class="navbar navbar-expand-md d-print-none shadow-none">
+        <header class="navbar navbar-expand-md d-print-none shadow-none fixed-top navbar-light bg-white">
             <div class="container-xl">
                 <div class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="{{ route('home') }}">
@@ -64,7 +64,7 @@
             <div class="w-100 mx-auto" style="max-width: 1200px;">
                 <div class="row my-100px  w-100 align-items-center justify-between">
                     <div
-                        class="col-md-6 text-center text-md-start d-flex align-items-center justify-content-center flex-column">
+                        class="col-md-6 text-center text-md-start d-flex align-items-center justify-content-center flex-column animate__animated animate__fadeInLeft">
                         <h1 class="fw-bold text-center" style="font-size: 48px !important;line-height: 1.2 !important;">
                             Nhà của bạn có thể giúp bạn kiếm
                             được <span class="text-primary">₫10.538.064</span> trên Larana</h1>
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <div class="map-container bg-light d-flex align-items-center justify-content-center w-100 rounded-3 shadow-lg"
+                        <div class="map-container bg-light d-flex align-items-center justify-content-center w-100 rounded-3 shadow-lg animate__animated animate__fadeInRight"
                             style="height: 600px">
                         </div>
                     </div>
@@ -93,16 +93,17 @@
             </div>
 
             <div class="my-100px">
-                <h1 class="fw-bold text-center mb-5" style="font-size: 36px !important;line-height: 1.2 !important;">
+                <h1 class="fw-bold text-center mb-5 animate__animated animate__fadeInUp"
+                    style="font-size: 36px !important;line-height: 1.2 !important;">
                     Đăng cho thuê nhà trên <br /> Larana thật dễ dàng
                 </h1>
 
-                <div class="w-75 mx-auto">
+                <div class="w-75 mx-auto animate-on-scroll">
                     <img src="{{ asset('admin/images/mb.avif') }}" class="img-fluid" />
                 </div>
 
                 <div class="w-75 mx-auto mt-5">
-                    <div class="row">
+                    <div class="row  animate-on-scroll">
                         <div class="col-md-4">
                             <div class="d-flex flex-column align-items-center justify-content-center">
                                 <div class="btn btn-icon p-2 bg-light">
@@ -156,10 +157,10 @@
                     </div>
                 </div>
 
-                <div class="w-100 mt-5">
+                <div class="w-100 mt-5 text-center animate-on-scroll">
                     <img src="{{ asset('admin/images/bg.avif') }}" />
                 </div>
-                <div class="w-100 mx-auto mt-5">
+                <div class="w-100 mx-auto mt-5 animate-on-scroll">
                     <div class="row">
                         <div class="col-md-4">
                             <h2>Nhận sự hướng dẫn riêng từ một Chủ nhà siêu cấp</h2>
@@ -189,11 +190,12 @@
                         filter: invert(42%) sepia(80%) saturate(500%) hue-rotate(180deg);
                     }
                 </style>
-                <div class="w-100 text-center mb-2">
+                <div class="w-100 text-center mb-2 animate-on-scroll">
                     <img src="{{ asset('admin/images/cover.avif') }}" class="img-fluid custom-avif text-center"
                         width="200" />
                 </div>
-                <h1 class="fw-bold text-center mb-5" style="font-size: 36px !important;line-height: 1.2 !important;">
+                <h1 class="fw-bold text-center mb-5 animate-on-scroll"
+                    style="font-size: 36px !important;line-height: 1.2 !important;">
                     Cho thuê nhà trên Larana với <br /> chương trình bảo vệ toàn diện
                 </h1>
 
@@ -203,7 +205,7 @@
                         font-size: 1.2rem;
                     }
                 </style>
-                <table class="table table-borderless" style="max-width: 950px;margin: 0 auto;">
+                <table class="table table-borderless animate-on-scroll" style="max-width: 950px;margin: 0 auto;">
                     <thead>
                         <tr>
                             <th class="text-start"></th>
@@ -294,11 +296,11 @@
 
             <div class="my-100px">
                 <div class="row align-items-center">
-                    <div class="col-md-6">
+                    <div class="col-md-6 animate-on-scroll">
                         <img src="{{ asset('admin/images/bg-2.webp') }}" class="img-fluid "
                             style="border-radius: 20px 0 0 20px;" />
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 animate-on-scroll">
                         <h1 class="fw-bold text-left" style="font-size: 36px !important;line-height: 1.2 !important;">
                             Bạn vẫn còn câu hỏi ?
                         </h1>
@@ -325,6 +327,23 @@
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&libraries=places&language=vi&callback=initMaps">
     </script>
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll(".animate-on-scroll");
+            console.log(elements);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate__animated");
+                        entry.target.classList.add("animate__fadeInUp");
+                    }
+                });
+            });
+
+            elements.forEach((element) => {
+                observer.observe(element);
+            });
+        });
+
         function initMaps() {
             const map = new google.maps.Map(document.querySelector('.map-container'), {
                 center: {
