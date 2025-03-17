@@ -32,6 +32,7 @@ return new class extends Migration {
             $table->integer('guests');
             $table->integer('children')->nullable();
             $table->boolean('is_verified')->default(false);
+            $table->boolean('is_blocked')->default(false);
             $table->enum('status', ActiveStatus::getValues())->default(ActiveStatus::Active->value);
             $table->timestamps();
         });

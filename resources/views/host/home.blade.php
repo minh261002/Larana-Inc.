@@ -52,7 +52,7 @@
                 </div>
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item">
-                        <a href="" class="btn btn-primary">
+                        <a href="{{ route('host.property.create.first') }}" class="btn btn-primary">
                             <i class="ti ti-home fs-2 me-2"></i>
                             Larana Setup
                         </a>
@@ -329,7 +329,6 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const elements = document.querySelectorAll(".animate-on-scroll");
-            console.log(elements);
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
