@@ -23,7 +23,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
     Route::get('/password/forgot', [AuthController::class, 'forgotPassword'])->name('password.forgot');
 
-    Route::middleware('auth:admin')->group(function () {
+    Route::middleware('custom.auth:admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
