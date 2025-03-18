@@ -3,6 +3,8 @@
 namespace App\Host\Http\Controllers\Property;
 
 use App\Enums\ActiveStatus;
+use App\Host\Http\Requests\Property\PropertyRequest;
+use App\Host\Services\Property\PropertyServiceInterface;
 use App\Repositories\Amenity\AmenityRepositoryInterface;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\Service\ServiceRepositoryInterface;
@@ -13,15 +15,18 @@ class PropertyController
     protected $categoryRepository;
     protected $amenityRepository;
     protected $serviceRepository;
+    protected $service;
 
     public function __construct(
         CategoryRepositoryInterface $categoryRepository,
         AmenityRepositoryInterface $amenityRepository,
-        ServiceRepositoryInterface $serviceRepository
+        ServiceRepositoryInterface $serviceRepository,
+        PropertyServiceInterface $service
     ) {
         $this->categoryRepository = $categoryRepository;
         $this->amenityRepository = $amenityRepository;
         $this->serviceRepository = $serviceRepository;
+        $this->service = $service;
     }
 
     public function first()
@@ -35,8 +40,9 @@ class PropertyController
         return view('host.property.first', compact('categories', 'amenities', 'services'));
     }
 
-    public function storeFirst(Request $request)
+    public function storeFirst(PropertyRequest $request)
     {
-        dd($request->all());
+        $this->service->store($request);
+        return redirect()->route('host.dashboard')->with('success', 'Thêm chỗ ở mới thành công');
     }
 }

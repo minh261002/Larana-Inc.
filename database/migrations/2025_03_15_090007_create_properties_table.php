@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->string('lng');
             $table->integer('price');
             $table->integer('sale_price')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('image')->nullable();
             $table->json('gallery')->nullable();
             $table->string('area');

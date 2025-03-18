@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="{{ asset('admin/css/jquery-ui.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css">
     @stack('styles')
 
     <style>
@@ -42,6 +43,7 @@
 
 <body>
     <script src="{{ asset('admin/js/demo-theme.min.js?1692870487') }}"></script>
+    <div id="fui-toast"></div>
 
     <div class="page bg-white">
         <header class="navbar navbar-expand-md d-print-none shadow-none fixed-top navbar-light bg-white">
@@ -145,9 +147,8 @@
                                     </h2>
                                     @foreach ($amenity as $item)
                                         <label class="form-check">
-                                            <input class="form-check-input"
-                                                name="amenities[{{ $key }}][{{ $item->id }}]"
-                                                type="checkbox">
+                                            <input class="form-check-input" name="amenities[{{ $item->id }}]"
+                                                type="checkbox" value="{{ $item->id }}">
                                             <span class="form-check-label">
                                                 <img src="{{ $item->icon }}" alt="{{ $item->name }}"
                                                     style="width: 20px; height: 20px;">
@@ -173,9 +174,8 @@
                                     </h2>
                                     @foreach ($service as $item)
                                         <label class="form-check">
-                                            <input class="form-check-input"
-                                                name="services[{{ $key }}][{{ $item->id }}]"
-                                                type="checkbox">
+                                            <input class="form-check-input" name="services[{{ $item->id }}]"
+                                                type="checkbox" value="{{ $item->id }}">
                                             <span class="form-check-label">
                                                 <img src="{{ $item->icon }}" alt="{{ $item->name }}"
                                                     style="width: 20px; height: 20px;">
@@ -242,25 +242,9 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-3">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">
-                                    Thao tác
-                                </h3>
-                            </div>
-
-                            <div class="card-body d-flex align-items-center justify-content-between gap-4">
-                                <a href="{{ route('host.home') }}" class="btn btn-secondary w-100">
-                                    Quay lại
-                                </a>
-                                <button type="submit" class="btn btn-primary w-100">
-                                    Thêm mới
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="card mt-3">
                             <div class="card-header">
                                 <div class="card-title">
                                     Số khách
@@ -274,7 +258,7 @@
                                         <button class="btn btn-outline-primary" type="button"
                                             onclick="changeValue('guests', -1)">-</button>
                                         <input type="text" class="form-control text-center" id="guests"
-                                            value="1" readonly>
+                                            name="guests" value="1" readonly>
                                         <button class="btn btn-outline-primary" type="button"
                                             onclick="changeValue('guests', 1)">+</button>
                                     </div>
@@ -286,7 +270,7 @@
                                         <button class="btn btn-outline-primary" type="button"
                                             onclick="changeValue('children', -1)">-</button>
                                         <input type="text" class="form-control text-center" id="children"
-                                            value="0" readonly>
+                                            name="children" value="0" readonly>
                                         <button class="btn btn-outline-primary" type="button"
                                             onclick="changeValue('children', 1)">+</button>
                                     </div>
@@ -340,6 +324,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Thao tác
+                                </h3>
+                            </div>
+
+                            <div class="card-body d-flex align-items-center justify-content-between gap-4">
+                                <a href="{{ route('host.home') }}" class="btn btn-secondary w-100">
+                                    Quay lại
+                                </a>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    Thêm mới
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -360,6 +360,9 @@
     <script src="{{ asset('admin/js/tabler.min.js?1692870487') }}" defer></script>
     <script src="{{ asset('admin/js/demo.min.js?1692870487') }}" defer></script>
     <script src="{{ asset('admin/js/setup.js') }}"></script>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
 
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&libraries=places&language=vi&callback=initMaps">
@@ -387,6 +390,26 @@
             }
         }
     </script>
+    @if (session('success'))
+        <script>
+            FuiToast.success('{{ session('success') }}');
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            FuiToast.error('{{ session('error') }}');
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            @foreach ($errors->all() as $error)
+                FuiToast.error('{{ $error }}');
+            @endforeach
+        </script>
+    @endif
+
     @stack('scripts')
 </body>
 

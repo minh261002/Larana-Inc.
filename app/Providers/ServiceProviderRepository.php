@@ -20,6 +20,7 @@ class ServiceProviderRepository extends ServiceProvider
         'App\Repositories\Category\CategoryRepositoryInterface' => 'App\Repositories\Category\CategoryRepository',
         'App\Repositories\Amenity\AmenityRepositoryInterface' => 'App\Repositories\Amenity\AmenityRepository',
         'App\Repositories\Service\ServiceRepositoryInterface' => 'App\Repositories\Service\ServiceRepository',
+        'App\Repositories\Property\PropertyRepositoryInterface' => 'App\Repositories\Property\PropertyRepository',
     ];
 
     public function register(): void
