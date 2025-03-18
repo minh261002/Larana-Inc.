@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('property_id')->constrained()->cascadeOnDelete();
             $table->foreignId('service_id')->constrained()->cascadeOnDelete();
-            $table->integer('price');
             $table->timestamps();
         });
     }

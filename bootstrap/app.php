@@ -9,16 +9,19 @@ return Application::configure(basePath: dirname(__DIR__))
         web: [
             __DIR__ . '/../routes/web.php',
             __DIR__ . '/../routes/admin.php',
+            __DIR__ . '/../routes/host.php',
         ],
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'auth' => \App\Http\Middleware\CustomAuthMiddleware::class,
+            'custom.auth' => \App\Http\Middleware\CustomAuthMiddleware::class,
             'admin' => \App\Http\Middleware\AdminLoginMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'login' => \App\Http\Middleware\LoginMiddleware::class,
+            'user.host' => \App\Http\Middleware\UserHostMiddleware::class,
+            'user.auth' => \App\Http\Middleware\UserAuthMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

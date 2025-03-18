@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="nav-item me-3">
-                    <a href="#" class="btn btn-outline-primary btn-sm rounded-5 p-1 px-2">
+                    <a href="{{ route('host.dashboard') }}" class="btn btn-outline-primary btn-sm rounded-5 p-1 px-2">
                         <i class="ti ti-home fs-2 me-2"></i>
                         Cho thuê nhà trên Larana
                     </a>

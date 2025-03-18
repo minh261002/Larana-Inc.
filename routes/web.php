@@ -19,6 +19,6 @@ Route::get('/login/facebook/callback', [AuthController::class, 'handleFacebookCa
 Route::get('/login/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/dang-xuat', [AuthController::class, 'logout'])->name('logout');
+Route::middleware('user.auth')->group(function () {
+    Route::post('/dang-xuat', [AuthController::class, 'logout'])->name('logout');
 });

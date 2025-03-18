@@ -11,16 +11,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Chọn địa chỉ</h5>
-                <button type="button" class="btn-close cancel-pick-address" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close cancel-pick-address" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="" class="form-label">Chọn địa chỉ</label>
-                    <input name="pickPlace" class="form-control" id="pickPlace"/>
+                    <input name="pickPlace" class="form-control" id="pickPlace" />
                 </div>
                 <div id="pickedAddress" class="mb-3">
                     <span><strong>
-                        @lang('Địa chỉ đã chọn')
+                            @lang('Địa chỉ đã chọn')
                         </strong></span>:
                     <span class="show-text"></span>
                 </div>
@@ -31,14 +32,16 @@
                         </strong>
                         @lang('(Hãy nhập thêm địa chỉ bên dưới nếu địa chỉ đã chọn không đúng với địa chỉ của bạn đã chọn)')
                     </label>
-                    <input name="pick_address_detail" class="form-control" id="pickAddressDetail" :placeholder="trans('Tên thôn, thị xã, tên đường, tòa nhà, số nhà')"/>
+                    <input name="pick_address_detail" class="form-control" id="pickAddressDetail"
+                        :placeholder="trans('Tên thôn, thị xã, tên đường, tòa nhà, số nhà')" />
                 </div>
                 <div id="showMap" class="w-100" style="height: 400px"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-link link-secondary me-auto cancel-pick-address"
-                        data-bs-dismiss="modal">Huỷ</button>
-                <button type="button" id="confirmPickAddress" class="btn btn-danger" data-bs-dismiss="modal">@lang('oke')</button>
+                    data-bs-dismiss="modal">Huỷ</button>
+                <button type="button" id="confirmPickAddress" class="btn btn-danger"
+                    data-bs-dismiss="modal">@lang('oke')</button>
             </div>
         </div>
     </div>
@@ -52,7 +55,10 @@
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('showMap'), {
-                center: {lat: 10.762622, lng: 106.660172},
+                center: {
+                    lat: 10.762622,
+                    lng: 106.660172
+                },
                 zoom: 12,
                 gestureHandling: "cooperative"
             });

@@ -40,7 +40,7 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('web')->attempt($data, $remember)) {
-            return redirect()->route('home')->with('success', 'Xin chào ' . Auth::user()->name);
+            return redirect()->route('home')->with('success', 'Xin chào, ' . Auth::guard('web')->user()->name);
         }
 
         return redirect()->back()->with('error', 'Thông tin đăng nhập không chính xác');

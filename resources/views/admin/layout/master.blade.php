@@ -43,7 +43,7 @@
     </style>
 
     <script>
-        const BASEURL = "{{ rtrim(env('APP_URL'), '/') }}/";
+        const BASEURL = "{{ rtrim(env(key: 'APP_URL'), '/') }}/";
     </script>
 
 </head>
