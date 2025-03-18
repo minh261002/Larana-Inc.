@@ -2,6 +2,7 @@
 
 namespace App\Host\Services\Property;
 
+use App\Enums\User\UserRole;
 use App\Repositories\Property\PropertyRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,10 @@ class PropertyService implements PropertyServiceInterface
 
         $data['gallery'] = json_encode($data['gallery']);
         $data['user_id'] = Auth::guard('web')->id();
+
+        Auth::guard('web')->user()->update([
+            'role' => UserRole::Host->value
+        ]);
 
         $property = $this->repository->create($data);
 
