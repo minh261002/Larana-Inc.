@@ -13,6 +13,7 @@ use App\Admin\Http\Controllers\User\UserController;
 use App\Admin\Http\Controllers\Post\PostCatalogueController;
 use App\Admin\Http\Controllers\Post\PostController;
 use App\Admin\Http\Controllers\Slider\SliderController;
+use App\Admin\Http\Controllers\Notification\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -280,6 +281,21 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
             Route::middleware(['permission:deleteService'])->group(function () {
                 Route::delete('/delete/{id}', [ServiceController::class, 'delete'])->name('delete');
+            });
+        });
+
+        Route::prefix('notification')->as('notification.')->group(function () {
+            Route::middleware(['permission:viewNotification'])->group(function () {
+                Route::get('/', [NotificationController::class, 'index'])->name('index');
+            });
+
+            Route::middleware(['permission:createNotification'])->group(function () {
+                Route::get('/create', [NotificationController::class, 'create'])->name('create');
+                Route::post('/store', [NotificationController::class, 'store'])->name('store');
+            });
+
+            Route::middleware(['permission:deleteNotification'])->group(function () {
+                Route::delete('/delete/{id}', [NotificationController::class, 'delete'])->name('delete');
             });
         });
     });

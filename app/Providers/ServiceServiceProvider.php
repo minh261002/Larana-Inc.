@@ -19,6 +19,7 @@ class ServiceServiceProvider extends ServiceProvider
         'App\Admin\Services\Category\CategoryServiceInterface' => 'App\Admin\Services\Category\CategoryService',
         'App\Admin\Services\Amenity\AmenityServiceInterface' => 'App\Admin\Services\Amenity\AmenityService',
         'App\Admin\Services\Service\ServiceServiceInterface' => 'App\Admin\Services\Service\ServiceService',
+        'App\Admin\Services\Notification\NotificationServiceInterface' => 'App\Admin\Services\Notification\NotificationService',
         'App\Host\Services\Property\PropertyServiceInterface' => 'App\Host\Services\Property\PropertyService',
     ];
     public function register(): void

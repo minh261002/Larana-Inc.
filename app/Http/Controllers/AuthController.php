@@ -94,6 +94,10 @@ class AuthController extends Controller
             return redirect()->route('login')->with('error', 'Bạn đã đăng ký tài khoản này bằng email hoặc google!');
         }
 
+        if ($check && $check->status == ActiveStatus::InActive) {
+            return redirect()->route('login')->with('error', 'Tài khoản của bạn đã bị khóa');
+        }
+
         $data = [
             'name' => $user->name,
             'email' => $user->email,

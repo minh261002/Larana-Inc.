@@ -21,6 +21,7 @@ class ServiceProviderRepository extends ServiceProvider
         'App\Repositories\Amenity\AmenityRepositoryInterface' => 'App\Repositories\Amenity\AmenityRepository',
         'App\Repositories\Service\ServiceRepositoryInterface' => 'App\Repositories\Service\ServiceRepository',
         'App\Repositories\Property\PropertyRepositoryInterface' => 'App\Repositories\Property\PropertyRepository',
+        'App\Repositories\Notification\NotificationRepositoryInterface' => 'App\Repositories\Notification\NotificationRepository',
     ];
 
     public function register(): void

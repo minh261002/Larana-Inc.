@@ -3,6 +3,8 @@
 use App\Enums\ActiveStatus;
 use App\Enums\Amenity\AmenityGroup;
 use App\Enums\Module\ModuleStatus;
+use App\Enums\Notification\NotificationObj;
+use App\Enums\Notification\NotificationType;
 use App\Enums\Service\ServiceGroup;
 use App\Enums\User\UserLoginType;
 use App\Enums\User\UserRole;
@@ -40,5 +42,14 @@ return [
         ServiceGroup::Transport->value => 'Dịch vụ vận chuyển',
         ServiceGroup::Special->value => 'Dịch vụ đặc biệt',
         ServiceGroup::Other->value => 'Khác',
-    ]
+    ],
+    NotificationType::class => [
+        NotificationType::One->value => 'Một người cụ thể',
+        NotificationType::All->value => 'Tất cả',
+    ],
+    NotificationObj::class => [
+        NotificationObj::All->value => 'Thông báo tất cả',
+        NotificationObj::Admin->value => 'Thông báo cho quản trị viên',
+        NotificationObj::User->value => 'Thông báo cho khách hàng',
+    ],
 ];
