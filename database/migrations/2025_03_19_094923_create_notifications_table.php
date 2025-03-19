@@ -19,8 +19,8 @@ return new class extends Migration {
             $table->string('title');
             $table->text('content');
             $table->enum('objects', NotificationObj::getValues())->default(NotificationObj::All);
-            $table->enum('user_types', NotificationType::getValues())->default(NotificationType::All->value);
-            $table->enum('admin_types', NotificationType::getValues())->default(NotificationType::All->value);
+            $table->enum('user_types', NotificationType::getValues())->nullable();
+            $table->enum('admin_types', NotificationType::getValues())->nullable();
             $table->boolean('is_read')->default(false);
             $table->timestamps();
         });

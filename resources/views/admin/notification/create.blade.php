@@ -126,7 +126,9 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="col-12 mb-3">
+                            <div class="col-12 mb-3 d-flex align-items-center justify-content-center gap-3">
+                                <a href="{{ route('admin.notification.index') }}" class="w-100 btn btn-secondary">Quay
+                                    lại</a>
                                 <button type="submit" class="w-100 btn btn-primary">Gửi thông báo</button>
                             </div>
                         </div>

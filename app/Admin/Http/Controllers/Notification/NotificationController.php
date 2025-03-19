@@ -2,6 +2,7 @@
 
 namespace App\Admin\Http\Controllers\Notification;
 
+use App\Admin\DataTables\Notification\NotificationDataTable;
 use App\Admin\Http\Requests\Notification\NotificationRequest;
 use App\Admin\Services\Notification\NotificationServiceInterface;
 use App\Enums\ActiveStatus;
@@ -32,6 +33,11 @@ class NotificationController
         $this->service = $service;
     }
 
+    public function index(NotificationDataTable $dataTable)
+    {
+        return $dataTable->render('admin.notification.index');
+    }
+
     public function create()
     {
         $types = NotificationType::asSelectArray();
@@ -46,6 +52,7 @@ class NotificationController
 
     public function store(NotificationRequest $request)
     {
-        dd($request->validated());
+        $this->service->notification($request);
+        return redirect()->route('admin.notification.index')->with('success', 'Gửi thông báo thành công');
     }
 }
