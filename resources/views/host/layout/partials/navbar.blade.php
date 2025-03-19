@@ -1,7 +1,3 @@
-@php
-    $admin = Auth::guard('admin')->user();
-@endphp
-
 <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
@@ -11,6 +7,7 @@
 
         <div class="navbar-nav flex-row order-md-last">
             <div class="d-none d-md-flex gap-2">
+
                 <div class="nav-item dropdown d-none d-md-flex me-3">
                     <a href="#" class="nav-link px-0 position-relative" data-bs-toggle="dropdown" tabindex="-1"
                         aria-label="Show notifications">
@@ -39,18 +36,23 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                     aria-label="Open user menu">
-                    <span class="avatar avatar-sm" style="background-image: url({{ $admin->image }})"></span>
+                    <span class="avatar avatar-sm"
+                        style="background-image: url({{ auth()->guard('web')->user()->image }})"></span>
                     <div class="d-none d-xl-block ps-2">
                         <div>
-                            {{ $admin->name }}
+                            {{ auth()->guard('web')->user()->name }}
                         </div>
                         <div class="mt-1 small text-secondary">
-                            {{ $admin->role->pluck('title')->first() }}
+                            @if (auth()->guard('web')->user()->role->value == \App\Enums\User\UserRole::Guest->value)
+                                Khách hàng
+                            @elseif(auth()->guard('web')->user()->role->value == \App\Enums\User\UserRole::Host->value)
+                                Chủ nhà
+                            @endif
                         </div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <form action="{{ route('admin.logout') }}" method="POST">
+                    <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="dropdown-item">Đăng xuất</button>
                     </form>

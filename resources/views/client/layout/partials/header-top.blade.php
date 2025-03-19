@@ -32,10 +32,18 @@
                 </div>
 
                 <div class="nav-item me-3">
-                    <a href="{{ route('host.dashboard') }}" class="btn btn-outline-primary btn-sm rounded-5 p-1 px-2">
-                        <i class="ti ti-home fs-2 me-2"></i>
-                        Cho thuê nhà trên Larana
-                    </a>
+                    @if (Auth::guard('web')->check() && Auth::guard('web')->user()->role->value == \App\Enums\User\UserRole::Host->value)
+                        <a href="{{ route('host.dashboard') }}"
+                            class="btn btn-outline-primary btn-sm rounded-5 p-1 px-2">
+                            <i class="ti ti-home fs-2 me-2"></i>
+                            Quản lý nhà của bạn
+                        </a>
+                    @else
+                        <a href="{{ route('host.home') }}" class="btn btn-outline-primary btn-sm rounded-5 p-1 px-2">
+                            <i class="ti ti-home fs-2 me-2"></i>
+                            Cho thuê nhà trên Larana
+                        </a>
+                    @endif
                 </div>
             </div>
 

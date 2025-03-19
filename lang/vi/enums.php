@@ -5,6 +5,7 @@ use App\Enums\Amenity\AmenityGroup;
 use App\Enums\Module\ModuleStatus;
 use App\Enums\Service\ServiceGroup;
 use App\Enums\User\UserLoginType;
+use App\Enums\User\UserRole;
 
 return [
     ActiveStatus::class => [
@@ -19,6 +20,10 @@ return [
         UserLoginType::Email->value => 'Email',
         UserLoginType::Google->value => 'Google',
         UserLoginType::Facebook->value => 'Facebook',
+    ],
+    UserRole::class => [
+        UserRole::Guest->value => 'Khách hàng',
+        UserRole::Host->value => 'Chủ nhà'
     ],
     AmenityGroup::class => [
         AmenityGroup::Basic->value => 'Cơ bản',

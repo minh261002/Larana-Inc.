@@ -47,4 +47,9 @@ class User extends Authenticatable
             'role' => UserRole::class,
         ];
     }
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
 }
