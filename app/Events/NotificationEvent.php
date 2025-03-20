@@ -53,4 +53,13 @@ class NotificationEvent implements ShouldBroadcast
         ];
     }
 
+    /**
+     * The event's broadcast name.
+     *
+     * @return string
+     */
+    public function broadcastAs(): string
+    {
+        return 'notification';
+    }
 }

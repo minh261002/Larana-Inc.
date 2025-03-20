@@ -11,13 +11,11 @@
     });
     Pusher.logToConsole = true;
 
-    var adminId = '{{ Auth::guard('admin')->user()->id ?? 0 }}';
+    var userId = '{{ Auth::guard('web')->user()->id ?? 0 }}';
 
-    var channel = pusher.subscribe(`App.Models.Admin.${adminId}`);
+    var channel = pusher.subscribe(`App.Models.User.${userId}`);
 
-    channel.bind('App\\Events\\NotificationEvent', function(data) {
-
-
+    channel.bind('notification', function(data) {
         FuiToast.success('Bạn có thông báo mới từ ' + data.body.adminName, {
             duration: 5000,
         });

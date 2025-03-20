@@ -119,6 +119,7 @@ class NotificationService implements NotificationServiceInterface
             'content' => $noty->content,
             'created_at' => $noty->created_at,
             'notyId' => $noty->id,
+            'adminName' => \Auth::guard('admin')->user()->name,
         ];
 
         $event = new NotificationEvent(
@@ -127,6 +128,9 @@ class NotificationService implements NotificationServiceInterface
             $isAdmin ? $noty->admin_id : $noty->user_id,
             $isAdmin ? 'admin' : 'user',
         );
+
+        //ghi log body
+        \Log::info(json_encode($body));
 
         Event::dispatch($event);
     }

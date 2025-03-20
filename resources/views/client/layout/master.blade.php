@@ -58,6 +58,8 @@
         @yield('content')
 
         @include('client.layout.partials.footer')
+
+        @include('client.layout.partials.pusher')
     </div>
 
 
