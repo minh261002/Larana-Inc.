@@ -1,7 +1,3 @@
-<a href="{{ route('admin.module.edit', $id) }}" class="btn btn-sm btn-primary">
-    <i class="ti ti-pencil fs-1"></i>
-</a>
-
 <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ $id }}">
     <i class="ti ti-trash fs-1"></i>
 </a>
@@ -30,8 +26,8 @@
                             </a>
                         </div>
                         <div class="col">
-                            <a href="{{ route('admin.module.delete', $id) }}" class="btn btn-danger w-100 btn-delete"
-                                data-bs-dismiss="modal">
+                            <a href="{{ route('admin.notification.delete', $id) }}"
+                                class="btn btn-danger w-100 btn-delete" data-bs-dismiss="modal">
                                 Xóa
                             </a>
                         </div>

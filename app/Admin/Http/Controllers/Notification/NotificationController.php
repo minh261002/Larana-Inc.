@@ -55,4 +55,10 @@ class NotificationController
         $this->service->notification($request);
         return redirect()->route('admin.notification.index')->with('success', 'Gửi thông báo thành công');
     }
+
+    public function delete($id)
+    {
+        $this->repository->delete($id);
+        return response()->json(['status' => 'success', 'message' => 'Xóa thông báo thành công']);
+    }
 }

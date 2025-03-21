@@ -2,6 +2,27 @@
 
 return [
     [
+        'active' => ['admin.notification.*'],
+        'show' => ['admin.notification.*'],
+        'title' => 'Thông báo',
+        'icon' => 'ti ti-bell fs-2',
+        'permission' => ['viewNotification', 'createNotification', 'editNotification', 'deleteNotification'],
+        'children' => [
+            [
+                'title' => 'Thêm mới',
+                'route' => 'admin.notification.create',
+                'icon' => 'ti ti-plus fs-3 me-2',
+                'permission' => 'createNotification'
+            ],
+            [
+                'title' => 'Danh sách',
+                'route' => 'admin.notification.index',
+                'icon' => 'ti ti-list fs-3 me-2',
+                'permission' => 'viewNotification'
+            ]
+        ]
+    ],
+    [
         'active' => ['admin.category.*'],
         'show' => ['admin.category.*'],
         'title' => 'Danh mục',
