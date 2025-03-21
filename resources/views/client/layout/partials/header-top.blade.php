@@ -18,14 +18,18 @@
             <div class="d-none d-md-flex">
                 <div class="nav-item dropdown d-none d-md-flex me-3">
                     <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1"
-                        aria-label="Show notifications">
+                        aria-label="Show notifications" aria-expanded="true">
                         <i class="ti ti-bell fs-1"></i>
-                        <span class="badge bg-red"></span>
+                        <span class="badge bg-red text-white" id="notify-count"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
+                    <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card"
+                        data-bs-popper="static">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Thông báo</h3>
+                            </div>
+                            <div class="list-group list-group-flush list-group-hoverable" id="notification-list"
+                                style="width: 500px">
                             </div>
                         </div>
                     </div>
@@ -66,6 +70,7 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <a href="{{ route('notification.index') }}" class="dropdown-item">Thông báo</a>
 
                         <div class="dropdown-divider"></div>
                         <form action="{{ route('logout') }}" method="POST">

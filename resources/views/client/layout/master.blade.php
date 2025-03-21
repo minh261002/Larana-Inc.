@@ -89,23 +89,25 @@
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
 
-    {{-- <script>
+    <script>
         $(document).ready(function() {
             function fetchNotification() {
                 $.ajax({
-                    url: "{{ route('admin.notification.my') }}",
+                    url: "{{ route('notification.get') }}",
                     type: 'GET',
                     success: function(response) {
-                        $('#notify-count').text(response.notifications.length);
 
-                        const notifications = Object.values(response.notifications);
+                        const notificationsArr = response.data;
+                        $('#notify-count').text(notificationsArr.length);
+
+                        const notifications = Object.values(notificationsArr);
                         if (notifications.length > 0) {
                             notifications.forEach(element => {
                                 $('#notification-list').append(`
                                <div class="list-group-item">
                                     <div class="row align-items-center">
 
-                                        ${element.is_read ==1 ? '<div class="col-auto"><span class="status-dot status-dot-animated bg-red d-block"></span></div>' : '<div class="col-auto"><span class="status-dot status-dot-animated bg-green d-block"></span></div>'}
+                                        ${element.is_read ? '<div class="col-auto"><span class="status-dot status-dot-animated bg-red d-block"></span></div>' : '<div class="col-auto"><span class="status-dot status-dot-animated bg-green d-block"></span></div>'}
 
                                         <div class="col text-truncate">
                                             <a href="#" class="text-body d-block">
@@ -138,7 +140,7 @@
 
             fetchNotification();
         })
-    </script> --}}
+    </script>
 
     @if (session('success'))
         <script>

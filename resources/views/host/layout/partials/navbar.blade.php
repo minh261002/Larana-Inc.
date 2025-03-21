@@ -22,7 +22,8 @@
                                 <i class="ti ti-bell fs-1 me-2"></i>
                                 <h3 class="card-title">Thông báo</h3>
                             </div>
-                            <div class="list-group list-group-flush list-group-hoverable" id="notification-list">
+                            <div class="list-group list-group-flush list-group-hoverable" id="notification-list"
+                                style="width:500px">
 
                             </div>
 

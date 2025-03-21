@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -21,4 +22,7 @@ Route::get('/login/google/callback', [AuthController::class, 'handleGoogleCallba
 
 Route::middleware('user.auth')->group(function () {
     Route::post('/dang-xuat', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/thong-bao', [NotificationController::class, 'index'])->name('notification.index');
+    Route::get('/get', [NotificationController::class, 'get'])->name('notification.get');
 });
